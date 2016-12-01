@@ -1,6 +1,8 @@
 USE mysql;
 
-CREATE TABLE IF NOT EXISTS `security` (
+DROP TABLE IF EXISTS `security`,`membre`;
+
+CREATE TABLE `security` (
   `camera` int(11) DEFAULT NULL,
   `filename` char(80) NOT NULL,
   `frame` int(11) DEFAULT NULL,
@@ -9,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `security` (
   `event_time_stamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00')
    ENGINE=InnoDB DEFAULT CHARSET=latin1;
    
-   CREATE TABLE IF NOT EXISTS `membre` (
+   CREATE TABLE `membre` (
    `id` int(11) NOT NULL,
    `pseudo` varchar(255) NOT NULL,
    `pass` varchar(255) NOT NULL,
