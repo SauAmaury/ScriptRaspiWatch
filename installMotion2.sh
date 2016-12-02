@@ -76,7 +76,7 @@ sudo cp RaspiWatch /var/www/
 
 # Configuration de la BDD
 
-mysql -uroot -pwatch < script.sql
+mysql -uroot -pwatch < Script.sql
 
 echo Installation terminée
 echo Redemarrage Iminent
