@@ -13,8 +13,8 @@ read -rsp $'Appuyer sur une touche pour continuer\n' -n1 key
 
 # Mise a jour des paquets
 
-sudo apt-get apt-get update --yes --force-yes
-sudo apt-get apt-get upgrade --yes --force-yes
+sudo apt-get update --yes --force-yes
+sudo apt-get upgrade --yes --force-yes
 
 # Installation des paquets
 
