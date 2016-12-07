@@ -31,17 +31,13 @@ sudo apt-get install --yes --force-yes motion
 sudo apt-get install --yes --force-yes apache2
 sudo apt-get install --yes --force-yes php5-common libapache2-mod-php5 php5-cli
 
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password raspberry'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password raspberry'
-sudo apt-get install --yes --force-yes mysql-server
+echo 'mysql-server-5.5 mysql-server/root_password password raspberry' | debconf-set-selections
+echo 'mysql-server-5.5 mysql-server/root_password password raspberry' | debconf-set-selections
+sudo apt-get --yes --force-yes install mysql-server-5.5
 
-echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/app-password-confirm password raspberry' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/admin-pass password raspberry' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/app-pass password raspberry' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/dbconfig-upgrade boolean false' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/dbconfig-install boolean false' | debconf-set-selections
 echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
-
 sudo apt-get install --yes --force-yes phpmyadmin
 
 sudo apt-get install --yes --force-yes openssl
