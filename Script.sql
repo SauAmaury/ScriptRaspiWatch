@@ -1,5 +1,3 @@
-//Création des tables dans la bdd
-
 USE mysql;
 
 DROP TABLE IF EXISTS `security`,`membre`;

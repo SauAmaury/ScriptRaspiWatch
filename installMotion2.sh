@@ -8,17 +8,8 @@
 echo Bienvenue dans l''installation du systéme de vidéo surveillance motion
 echo l''installation est autonome, votre appareil redémarrera à la fin de la procéure
 read -rsp $'Appuyer sur une touche pour continuer\n' -n1 key
-# Configuration systéme
 
 
-# Desinstallation des paquets
-
-sudo apt-get purge --yes --force-yes motion
-sudo apt-get purge --yes --force-yes apache2
-sudo apt-get purge --yes --force-yes phpmyadmin
-sudo apt-get purge --yes --force-yes mysql-server
-sudo apt-get purge --yes --force-yes php5
-sudo apt-get purge --yes --force-yes openssl
 
 # Mise a jour des paquets
 
@@ -27,19 +18,28 @@ sudo apt-get apt-get upgrade --yes --force-yes
 
 # Installation des paquets
 
-sudo apt-get install --yes --force-yes motion
-sudo apt-get install --yes --force-yes apache2
-sudo apt-get install --yes --force-yes php5-common libapache2-mod-php5 php5-cli
+sudo apt-get remove --yes --force-yes  mysql-server-5.5
+sudo apt-get remove --yes --force-yes phpmyadmin
 
-echo 'mysql-server-5.5 mysql-server/root_password password raspberry' | debconf-set-selections
-echo 'mysql-server-5.5 mysql-server/root_password password raspberry' | debconf-set-selections
-sudo apt-get --yes --force-yes install mysql-server-5.5
+echo "mysql-server-5.5 mysql-server/root_password password raspberry" | debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again password raspberry" | debconf-set-selections
+sudo apt-get -y install mysql-server-5.5
 
-echo 'phpmyadmin phpmyadmin/dbconfig-upgrade boolean false' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/dbconfig-install boolean false' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
+echo "phpmyadmin phpmyadmin/internal/skip-preseed boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | debconf-set-selections
 sudo apt-get install --yes --force-yes phpmyadmin
 
+sudo apt-get remove --yes --force-yes motion
+sudo apt-get install --yes --force-yes motion
+
+sudo apt-get remove --yes --force-yes apache2
+sudo apt-get install --yes --force-yes apache2
+
+sudo apt-get remove --yes --force-yes php5
+sudo apt-get install --yes --force-yes php5-common libapache2-mod-php5 php5-cli
+
+sudo apt-get remove --yes --force-yes openssl
 sudo apt-get install --yes --force-yes openssl
 
 # Configuration de motion
@@ -47,14 +47,15 @@ sudo apt-get install --yes --force-yes openssl
 sudo rm /etc/motion/*
 sudo cp motion.conf /etc/motion/
 sudo cp  /etc/motion/
+sudo cp thread1.conf /etc/motion/
 sudo cp thread2.conf /etc/motion/
-sudo chmod 755 /etc/motion.conf
-sudo chmod 755 /etc/thread1.conf
-sudo chmod 755 /etc/thread2.conf
+sudo chmod 755 /etc/motion/motion.conf
+sudo chmod 755 /etc/motion/thread1.conf
+sudo chmod 755 /etc/motion/thread2.conf
 sudo chmod 755 /usr/bin/motion
 sudo chmod 775 /tmp/motion.log
 sudo rm /etc/default/motion
-sudo cp motion /etc/default/
+sudo cp motion /etc/default
 
 
 # Configuration de apache2
@@ -67,12 +68,12 @@ sudo cp 000-default.conf /etc/apache2/sites-available
 sudo cp 000-default.conf /etc/apache2/sites-enabled
 sudo chmod 644 /etc/apache2/sites-available/000-default.conf
 sudo chmod 777 /etc/apache2/sites-enabled/000-default.conf
-sudo cp RaspiWatch /var/www/
+sudo cp -R  RaspiWatch /var/www/
 
 
 # Configuration de la BDD
 
-mysql -uroot -pwatch < Script.sql
+mysql -uroot -praspberry < Script.sql
 
 echo Installation terminée
 echo Redemarrage Iminent
