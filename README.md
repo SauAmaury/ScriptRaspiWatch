@@ -1,2 +1,2 @@
 # ScriptRaspiWatch
-Installateur pour une solution de vidéo surveillance sous Raspbian
+Installateur pour une solution de vidéo surveillance sous Raspbian.
