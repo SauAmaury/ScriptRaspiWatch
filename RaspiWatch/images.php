@@ -65,6 +65,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+
                         <a class="navbar-brand" href="#">RaspiWatch</a>
                     </div>
 
@@ -90,13 +91,13 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                     <!-- Menu a gauche  -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
-                            <li class="active">
+                            <li>
                                 <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct </a>
                             </li>
                             <li>
                                 <?php echo "<a href="."controlMotion.php?id=".$userInfo['id']?> "><i class="fa fa-fw fa-wrench"></i> Configuration des Caméras </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <?php echo "<a href="."images.php?id=".$userInfo['id']?> "><i class="fa fa-fw fa-picture-o"></i> Visualisation des Images </a>
                             </li>
                         </ul>
@@ -111,7 +112,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                            Caméra en Direct <small>Visionner le flux des caméras en direct</small>
+                            Visualisation des Images <small>Visionner les images prisent par les caméras</small>
                         </h1>
                                 <ol class="breadcrumb">
                                     <li>
@@ -119,53 +120,34 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                         <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "> Dashboard</a>
                                     </li>
                                     <li class="active">
-                                        <i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct
+                                        <i class="fa fa-picture-o"></i> Visualisation des Images
                                     </li>
                                 </ol>
                             </div>
                         </div>
 
+                        <!--   CONTENU DE LA PAGE   -->
+
+                        <div class="page-header">
+                            <h1>Image</h1>
+                        </div>
                         <div class="row">
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
+                            <!-- mettre boucle ici fetch pour afficher toutes les images de la BDD-->
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="images/pic05.jpg" alt="...">
+                                    <div class="caption text-center">
+                                        <h4>DATE ET HEURE IMAGE ICI</h4>
+                                        <p><a href="#" class="btn btn-primary" role="button">Enregistrer</a>
+                                            <a href="#" class="btn btn-danger" role="button">Supprimer</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
 
                 <!-- jQuery -->
                 <script src="assets/js/jquery.js"></script>

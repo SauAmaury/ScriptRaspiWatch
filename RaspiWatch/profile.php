@@ -24,7 +24,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Dashboard</title>
+        <title>Contrôler les différentes caméras</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -40,6 +40,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+        <!-- File JavaScript contenant function pour controler motion -->
+        <script language="javascript" type="text/javascript" src="assets/js/popupConfigMotion.js"></script>
+        <!-- CSS button -->
+        <link href="assets/css/buttonOnOffMotion.css" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -65,6 +69,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+
                         <a class="navbar-brand" href="#">RaspiWatch</a>
                     </div>
 
@@ -90,10 +95,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                     <!-- Menu a gauche  -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
-                            <li class="active">
+                            <li>
                                 <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <?php echo "<a href="."controlMotion.php?id=".$userInfo['id']?> "><i class="fa fa-fw fa-wrench"></i> Configuration des Caméras </a>
                             </li>
                             <li>
@@ -105,66 +110,20 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
 
                 <div id="page-wrapper">
 
-                    <div class="container-fluid">
+                <div class="container-fluid">
 
                         <!-- Page Heading -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                            Caméra en Direct <small>Visionner le flux des caméras en direct</small>
+                            Profile <small>Modifier votre profil</small>
                         </h1>
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <i class="fa fa-dashboard"></i>
-                                        <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "> Dashboard</a>
-                                    </li>
-                                    <li class="active">
-                                        <i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct
-                                    </li>
-                                </ol>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
+
 
 
                 <!-- jQuery -->

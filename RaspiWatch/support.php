@@ -24,7 +24,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Dashboard</title>
+        <title>Contrôler les différentes caméras</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -40,6 +40,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+        <!-- File JavaScript contenant function pour controler motion -->
+        <script language="javascript" type="text/javascript" src="assets/js/popupConfigMotion.js"></script>
+        <!-- CSS button -->
+        <link href="assets/css/buttonOnOffMotion.css" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -65,6 +69,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+
                         <a class="navbar-brand" href="#">RaspiWatch</a>
                     </div>
 
@@ -90,10 +95,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                     <!-- Menu a gauche  -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
-                            <li class="active">
+                            <li>
                                 <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <?php echo "<a href="."controlMotion.php?id=".$userInfo['id']?> "><i class="fa fa-fw fa-wrench"></i> Configuration des Caméras </a>
                             </li>
                             <li>
@@ -111,75 +116,52 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                            Caméra en Direct <small>Visionner le flux des caméras en direct</small>
+                            Support <small>Contactez-nous</small>
                         </h1>
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <i class="fa fa-dashboard"></i>
-                                        <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "> Dashboard</a>
-                                    </li>
-                                    <li class="active">
-                                        <i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
+                            </div>
+
+                            <form class="form-horizontal" role="form" method="post" action="support.php">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Nom</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom & Last Name" value="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="message" class="col-sm-2 control-label">Message</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="4" name="message"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel panel-primary col-lg-6">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
-                                        </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <input id="submit" name="submit" type="submit" value="Envoyé" class="btn btn-primary">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </form>
 
 
-                <!-- jQuery -->
-                <script src="assets/js/jquery.js"></script>
 
-                <!-- Bootstrap Core JavaScript -->
-                <script src="assets/js/bootstrap.min.js"></script>
+                            <!-- jQuery -->
+                            <script src="assets/js/jquery.js"></script>
 
-                <!-- Morris Charts JavaScript -->
-                <script src="assets/js/plugins/morris/raphael.min.js"></script>
-                <script src="assets/js/plugins/morris/morris.min.js"></script>
-                <script src="assets/js/plugins/morris/morris-data.js"></script>
+                            <!-- Bootstrap Core JavaScript -->
+                            <script src="assets/js/bootstrap.min.js"></script>
+
+                            <!-- Morris Charts JavaScript -->
+                            <script src="assets/js/plugins/morris/raphael.min.js"></script>
+                            <script src="assets/js/plugins/morris/morris.min.js"></script>
+                            <script src="assets/js/plugins/morris/morris-data.js"></script>
 
 
-                <?php
+                            <?php
 			}   // fermeture  de if numero 2
 	        else{
 	            echo '<img class="pasdispo" src="images/pagePasDispo.png" alt="" > ';

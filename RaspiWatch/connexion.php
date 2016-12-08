@@ -35,33 +35,34 @@ if (isset($_POST['ok'])){
 ?>
 
 
-<!DOCTYPE html>
-<html>
-	<head>
-	  <title>Connection</title>
-	  <meta charset="utf-8" />
-	  <meta name="viewport" content="width=device-width, initial-scale=1" />
-	  <link rel="stylesheet" href="assets/css/connexion.css" />
-	  <link rel="icon" href="images/favicon.ico" />
-	</head>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Connection</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/connexion.css" />
+        <link rel="icon" href="images/favicon.ico" />
+    </head>
 
 
-	<body>
-	<div class="login-block">
-		<h1>Se connecter</h1>
-		<form method="post" action="connexion.php">
-		  <input type="text"     name="username" id="username" required placeholder="Pseudo" autocomplete="off"> 
-		  <input type="password" name="password" id="password" required placeholder="Mot de passe" autocomplete="off"> 
-		  <input type="submit"   name="ok" value="Se connecter" >
-		  <?php
+    <body>
+        <div class="login-block">
+            <h1>Se connecter</h1>
+            <form method="post" action="connexion.php">
+                <input type="text" name="username" id="username" required placeholder="Pseudo" autocomplete="off">
+                <input type="password" name="password" id="password" required placeholder="Mot de passe" autocomplete="off">
+                <input type="submit" name="ok" value="Se connecter">
+                <?php
         echo "<br>";
         if (isset($erreur))
         {
           echo'<font color ="red">'.$erreur.'</font>';            // affiche les different erreur qui pevent survenir  (en rouge)
         }
        ?>
-		</form>
-	</div>
-	</body>
+            </form>
+        </div>
+    </body>
 
-</html>
+    </html>
