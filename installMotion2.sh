@@ -5,8 +5,8 @@
 # -------------------------------------------------------
 
 # Introduction
-echo Bienvenue dans l''installation du systéme de vidéo surveillance motion
-echo l''installation est autonome, votre appareil redémarrera à la fin de la procéure
+echo Bienvenue dans l installation du systéme de vidéo surveillance motion
+echo l installation est autonome, votre appareil redémarrera à la fin de la procéure
 read -rsp $'Appuyer sur une touche pour continuer\n' -n1 key
 
 
