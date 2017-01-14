@@ -81,19 +81,6 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <li>
                                     <?php echo "<a href="."profile.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-user"></i> Profile</a>
                                 </li>
-								<?php 
-									if ($userInfo['id'] == 6){ 
-									echo '<li>';
-										echo '<a href="inscription.php"><i class="glyphicon glyphicon-plus"></i> Inscrire</a>';
-									echo '</li>';
-									}
-									/*
-									else{
-									echo '<li>';
-										echo '<a href=support.php?id=".$userInfo['id']"><i class="glyphicon glyphicon-question-sign"></i> Support</a>';
-									echo '</li>';
-									}*/
-								?>	
                                 <li>
                                     <?php echo "<a href="."support.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-question-sign"></i> Support</a>
                                 </li>
@@ -123,35 +110,58 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
 
                 <div id="page-wrapper">
 
-                <div class="container-fluid">
+                    <div class="container-fluid">
 
                         <!-- Page Heading -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                            Profile <small>Modifier votre profil</small>
+                            Support <small>Contactez-nous</small>
                         </h1>
+
                             </div>
-                        </div>
-                        
-                    </div>
-                </div>
+
+                            <form class="form-horizontal" role="form" method="post" action="support.php">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Nom</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom & Last Name" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" class="col-sm-2 control-label">Message</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="4" name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <input id="submit" name="submit" type="submit" value="Envoyé" class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </form>
 
 
 
-                <!-- jQuery -->
-                <script src="assets/js/jquery.js"></script>
+                            <!-- jQuery -->
+                            <script src="assets/js/jquery.js"></script>
 
-                <!-- Bootstrap Core JavaScript -->
-                <script src="assets/js/bootstrap.min.js"></script>
+                            <!-- Bootstrap Core JavaScript -->
+                            <script src="assets/js/bootstrap.min.js"></script>
 
-                <!-- Morris Charts JavaScript -->
-                <script src="assets/js/plugins/morris/raphael.min.js"></script>
-                <script src="assets/js/plugins/morris/morris.min.js"></script>
-                <script src="assets/js/plugins/morris/morris-data.js"></script>
+                            <!-- Morris Charts JavaScript -->
+                            <script src="assets/js/plugins/morris/raphael.min.js"></script>
+                            <script src="assets/js/plugins/morris/morris.min.js"></script>
+                            <script src="assets/js/plugins/morris/morris-data.js"></script>
 
 
-                <?php
+                            <?php
 			}   // fermeture  de if numero 2
 	        else{
 	            echo '<img class="pasdispo" src="images/pagePasDispo.png" alt="" > ';

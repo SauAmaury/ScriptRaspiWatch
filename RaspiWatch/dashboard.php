@@ -2,8 +2,10 @@
 session_start();
 require 'php/connexion.php';
 $bdd = new connexion();
+$ip = $_SERVER['SERVER_ADDR'];
 
-if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe si elle exite alros cela affiche la page
+
+if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe si elle exite alors cela affiche la page
 {  // ouverture de if numero 1
     $getId = intval($_GET['id']);   // transformer le id en int
     $reqUser = $bdd->getConnexion()->prepare('SELECT * FROM membre WHERE id = ?');
@@ -24,7 +26,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Dashboard</title>
+        <title>Caméra en Direct</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -76,9 +78,24 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <li>
                                     <?php echo "<a href="."profile.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-user"></i> Profile</a>
                                 </li>
+								<?php 
+									if ($userInfo['id'] == 6){ 
+									echo '<li>';
+										echo '<a href="inscription.php"><i class="glyphicon glyphicon-plus"></i> Inscrire</a>';
+									echo '</li>';
+									}
+									/*
+									else{
+									echo '<li>';
+										echo '<a href=support.php?id=".$userInfo['id']"><i class="glyphicon glyphicon-question-sign"></i> Support</a>';
+									echo '</li>';
+									}*/
+								?>	
                                 <li>
                                     <?php echo "<a href="."support.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-question-sign"></i> Support</a>
                                 </li>
+								
+								
                                 <li class="divider"></li>
                                 <li>
                                     <a href="php/deconnexion.php"><i class="glyphicon glyphicon-off"></i> Déconnexion</a>
@@ -111,15 +128,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                            Caméra en Direct <small>Visionner le flux des caméras en direct</small>
-                        </h1>
+									Caméra en Direct <small>Visionner le flux des caméras en direct</small>
+								</h1>
                                 <ol class="breadcrumb">
                                     <li>
-                                        <i class="fa fa-dashboard"></i>
-                                        <?php echo "<a href="."dashboard.php?id=".$userInfo['id']?> "> Dashboard</a>
-                                    </li>
-                                    <li class="active">
-                                        <i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct
+                                        <i class="glyphicon glyphicon-facetime-video"></i>
+                                          Caméra en Direct
                                     </li>
                                 </ol>
                             </div>
@@ -130,7 +144,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8081" scrolling="no" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +153,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8082" scrolling="no" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +162,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8083" scrolling="no" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +171,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reBBW2zZVc8" frameborder="0" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8084" scrolling="no" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>

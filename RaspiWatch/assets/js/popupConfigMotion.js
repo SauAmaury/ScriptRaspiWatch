@@ -1,13 +1,5 @@
-/* function pour permettre le chargement complet la page pour réaliser l'action */
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
-
+var ip = null;
+getServerIP();
 /**** Load function des boutons ****/
 
 window.onload = function () {
@@ -73,114 +65,130 @@ window.onload = function () {
     /*********************************/
 }
 
+/**** Fonction récupérant l'adresse du serveur(pi) ****/
+function getServerIP()
+		{
 
+		    var xhr = new XMLHttpRequest();
 
+		    xhr.onload = function()
+		        {
+		        ip =(xhr.responseText);
+		        }
+
+		    xhr.open('GET', 'php/AdresseServeur.php');
+
+		    xhr.send();
+		}
 
 /**** FUNCTION DES BOUTONS CAM 1****/
 
-function detectionStart() {
-    var start = window.open('http://172.23.40.235:8080/1/detection/start');
-    sleep(10);
-    start.close();
+function detectionStart() {	
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/1/detection/start"); 
+    xmlHttp.send();
+    }
+
+function detectionStop() {	
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open(  "GET","http://"+ip+":8080/1/detection/pause"); 
+    xmlHttp.send();
+    
 }
 
-function detectionStop() {
-    var stop = window.open('http://172.23.40.235:8080/1/detection/pause');
-    sleep(10);
-    stop.close();
+function actionQuit() {   
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/1/detection/quit"); 
+    xmlHttp.send();
 }
 
-function actionQuit() {
-    var stop = window.open('http://172.23.40.235:8080/1/action/quit');
-    sleep(10);
-    stop.close();
-}
-
-function actionRestart() {
-    var restart = window.open('http://172.23.40.235:8080/1/action/restart');
-    sleep(10);
-    restart.close();
+function actionRestart() {	
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET","http://"+ip+":8080/1/detection/restart"); 
+    xmlHttp.send();
+	
+	
 }
 /****************************/
 
 /**** FUNCTION DES BOUTONS CAM 2****/
 
 function detectionStart2() {
-    var start = window.open('http://172.23.40.235:8080/2/detection/start');
-    sleep(10);
-    start.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/2/detection/start"); 
+    xmlHttp.send();
 }
 
 function detectionStop2() {
-    var stop = window.open('http://172.23.40.235:8080/2/detection/pause');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/2/detection/pause"); 
+    xmlHttp.send();
 }
 
 function actionQuit2() {
-    var stop = window.open('http://172.23.40.235:8080/2/action/quit');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/2/detection/quit");
+    xmlHttp.send();
 }
 
 function actionRestart2() {
-    var restart = window.open('http://172.23.40.235:8080/2/action/restart');
-    sleep(10);
-    restart.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/2/detection/restart"); 
+    xmlHttp.send();
 }
 /****************************/
 
 /**** FUNCTION DES BOUTONS CAM 3****/
 
 function detectionStart3() {
-    var start = window.open('http://172.23.40.235:8080/3/detection/start');
-    sleep(10);
-    start.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/3/detection/start"); 
+    xmlHttp.send();
 }
 
 function detectionStop3() {
-    var stop = window.open('http://172.23.40.235:8080/3/detection/pause');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/3/detection/pause"); 
+    xmlHttp.send();
 }
 
 function actionQuit3() {
-    var stop = window.open('http://172.23.40.235:8080/3/action/quit');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/3/detection/quit");  
+    xmlHttp.send();
 }
 
 function actionRestart3() {
-    var restart = window.open('http://172.23.40.235:8080/3/action/restart');
-    sleep(10);
-    restart.close();
+  var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/3/detection/restart");  
+    xmlHttp.send();
 }
 /****************************/
 
 /**** FUNCTION DES BOUTONS CAM 4****/
 
 function detectionStart4() {
-    var start = window.open('http://172.23.40.235:8080/4/detection/start');
-    sleep(10);
-    start.close();
+   var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/4/detection/start"); 
+    xmlHttp.send();
 }
 
 function detectionStop4() {
-    var stop = window.open('http://172.23.40.235:8080/4/detection/pause');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/4/detection/pause"); 
+    xmlHttp.send();
 }
 
 function actionQuit4() {
-    var stop = window.open('http://172.23.40.235:8080/4/action/quit');
-    sleep(10);
-    stop.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/4/detection/quit"); 
+    xmlHttp.send();
 }
 
 function actionRestart4() {
-    var restart = window.open('http://172.23.40.235:8080/4/action/restart');
-    sleep(10);
-    restart.close();
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://"+ip+":8080/4/detection/restart"); 
+    xmlHttp.send();
 }
 /****************************/
 
