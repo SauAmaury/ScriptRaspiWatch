@@ -56,12 +56,12 @@ sudo chmod 755 /etc/motion/thread2.conf
 sudo chmod 755 /etc/motion/thread3.conf
 sudo chmod 755 /usr/bin/motion
 sudo chmod 775 /tmp/motion.log
-sudo mkdir /var/www/imgCamera1
-sudo mkdir /var/www/imgCamera2
-sudo mkdir /var/www/imgCamera3
-sudo chmod 766 /var/www/imgCamera1
-sudo chmod 766 /var/www/imgCamera2
-sudo chmod 766 /var/www/imgCamera3
+sudo mkdir /var/www/RaspiWatch/imgCamera1
+sudo mkdir /var/www/RaspiWatch/imgCamera2
+sudo mkdir /var/www/RaspiWatch/imgCamera3
+sudo chmod 766 /var/www/RaspiWatch/imgCamera1
+sudo chmod 766 /var/www/RaspiWatch/imgCamera2
+sudo chmod 766 /var/www/RaspiWatch/imgCamera3
 sudo rm /etc/default/motion
 sudo cp motion /etc/default
 
