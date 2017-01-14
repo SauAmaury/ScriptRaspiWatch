@@ -49,11 +49,19 @@ sudo cp motion.conf /etc/motion/
 sudo cp  /etc/motion/
 sudo cp thread1.conf /etc/motion/
 sudo cp thread2.conf /etc/motion/
+sudo cp thread3.conf /etc/motion/
 sudo chmod 755 /etc/motion/motion.conf
 sudo chmod 755 /etc/motion/thread1.conf
 sudo chmod 755 /etc/motion/thread2.conf
+sudo chmod 755 /etc/motion/thread3.conf
 sudo chmod 755 /usr/bin/motion
 sudo chmod 775 /tmp/motion.log
+sudo mkdir imgCamera1
+sudo mkdir imgCamera2
+sudo mkdir imgCamera3
+sudo chmod 766 imgCamera1
+sudo chmod 766 imgCamera2
+sudo chmod 766 imgCamera3
 sudo rm /etc/default/motion
 sudo cp motion /etc/default
 
