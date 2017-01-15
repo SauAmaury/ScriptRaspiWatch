@@ -42,29 +42,6 @@ sudo apt-get install --yes --force-yes php5-common libapache2-mod-php5 php5-cli
 sudo apt-get remove --yes --force-yes openssl
 sudo apt-get install --yes --force-yes openssl
 
-# Configuration de motion
-
-sudo rm /etc/motion/*
-sudo cp motion.conf /etc/motion/
-sudo cp  /etc/motion/
-sudo cp thread1.conf /etc/motion/
-sudo cp thread2.conf /etc/motion/
-sudo cp thread3.conf /etc/motion/
-sudo chmod 755 /etc/motion/motion.conf
-sudo chmod 755 /etc/motion/thread1.conf
-sudo chmod 755 /etc/motion/thread2.conf
-sudo chmod 755 /etc/motion/thread3.conf
-sudo chmod 755 /usr/bin/motion
-sudo chmod 775 /tmp/motion.log
-sudo mkdir /var/www/RaspiWatch/imgCamera1
-sudo mkdir /var/www/RaspiWatch/imgCamera2
-sudo mkdir /var/www/RaspiWatch/imgCamera3
-sudo chmod 766 /var/www/RaspiWatch/imgCamera1
-sudo chmod 766 /var/www/RaspiWatch/imgCamera2
-sudo chmod 766 /var/www/RaspiWatch/imgCamera3
-sudo rm /etc/default/motion
-sudo cp motion /etc/default
-
 
 # Configuration de apache2
 
@@ -77,6 +54,36 @@ sudo cp 000-default.conf /etc/apache2/sites-enabled
 sudo chmod 644 /etc/apache2/sites-available/000-default.conf
 sudo chmod 777 /etc/apache2/sites-enabled/000-default.conf
 sudo cp -R  RaspiWatch /var/www/
+
+# Configuration de motion
+
+sudo rm /etc/motion/*
+sudo cp motion.conf /etc/motion/
+sudo cp  /etc/motion/
+sudo cp thread1.conf /etc/motion/
+sudo cp thread2.conf /etc/motion/
+sudo cp thread3.conf /etc/motion/
+sudo cp thread4.conf /etc/motion/
+sudo chmod 755 /etc/motion/motion.conf
+sudo chmod 755 /etc/motion/thread1.conf
+sudo chmod 755 /etc/motion/thread2.conf
+sudo chmod 755 /etc/motion/thread3.conf
+sudo chmod 755 /etc/motion/thread4.conf
+sudo chmod 755 /usr/bin/motion
+sudo chmod 775 /tmp/motion.log
+sudo mkdir /var/www/RaspiWatch/imgCamera1
+sudo mkdir /var/www/RaspiWatch/imgCamera2
+sudo mkdir /var/www/RaspiWatch/imgCamera3
+sudo mkdir /var/www/RaspiWatch/imgCamera4
+sudo chmod 766 /var/www/RaspiWatch/imgCamera1
+sudo chmod 766 /var/www/RaspiWatch/imgCamera2
+sudo chmod 766 /var/www/RaspiWatch/imgCamera3
+sudo chmod 766 /var/www/RaspiWatch/imgCamera4
+sudo rm /etc/default/motion
+sudo cp motion /etc/default
+
+
+
 
 
 # Configuration de la BDD
