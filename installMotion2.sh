@@ -83,7 +83,7 @@ sudo rm /etc/default/motion
 sudo cp motion /etc/default
 
 
-
+sudo chmod 711 uninstall.sh
 
 
 # Configuration de la BDD
