@@ -3,7 +3,7 @@ session_start();
 require 'php/connexion.php';
 $bdd = new connexion();
 
-if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe si elle exite alros cela affiche la page
+if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe si elle exite alors cela affiche la page
 {  // ouverture de if numero 1
     $getId = intval($_GET['id']);   // transformer le id en int
     $reqUser = $bdd->getConnexion()->prepare('SELECT * FROM membre WHERE id = ?');
@@ -70,7 +70,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="#">RaspiWatch</a>
+                        <?php echo "<a class="."navbar-brand"." href="."dashboard.php?id=".$userInfo['id']?>>RaspiWatch</a>
                     </div>
 
                     <ul class="nav navbar-right top-nav">
@@ -78,29 +78,25 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userInfo['pseudo'] ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <?php echo "<a href="."profile.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-user"></i> Profile</a>
-                                </li>
-								<?php 
+                                <?php 
 									if ($userInfo['id'] == 6){ 
+									echo '<li>';
+										echo '<a href="admin.php?id=6"><i class="glyphicon glyphicon-user"></i> Admin</a>';
+									echo '</li>';	
 									echo '<li>';
 										echo '<a href="inscription.php"><i class="glyphicon glyphicon-plus"></i> Inscrire</a>';
 									echo '</li>';
+                                										
 									}
-									/*
-									else{
-									echo '<li>';
-										echo '<a href=support.php?id=".$userInfo['id']"><i class="glyphicon glyphicon-question-sign"></i> Support</a>';
-									echo '</li>';
-									}*/
-								?>	
-                                <li>
-                                    <?php echo "<a href="."support.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-question-sign"></i> Support</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="php/deconnexion.php"><i class="glyphicon glyphicon-off"></i> Déconnexion</a>
-                                </li>
+								?>
+									<li>
+										<a href="parametres.php?id=<?= $userInfo['id']?> " ><i class="glyphicon glyphicon-wrench"></i> Paramètres</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+                                    <li>
+                                        <a href="php/deconnexion.php"><i class="glyphicon glyphicon-off"></i> Déconnexion</a>
+                                    </li>
                             </ul>
                         </li>
                     </ul>

@@ -67,7 +67,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">RaspiWatch</a>
+						<?php echo "<a class="."navbar-brand"." href="."dashboard.php?id=".$userInfo['id']?>>RaspiWatch</a>
                     </div>
 
                     <ul class="nav navbar-right top-nav">
@@ -75,31 +75,25 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userInfo['pseudo'] ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <?php echo "<a href="."profile.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-user"></i> Profile</a>
-                                </li>
-								<?php 
+                                <?php 
 									if ($userInfo['id'] == 6){ 
+									echo '<li>';
+										echo '<a href="admin.php?id=6"><i class="glyphicon glyphicon-user"></i> Admin</a>';
+									echo '</li>';	
 									echo '<li>';
 										echo '<a href="inscription.php"><i class="glyphicon glyphicon-plus"></i> Inscrire</a>';
 									echo '</li>';
+                                													
 									}
-									/*
-									else{
-									echo '<li>';
-										echo '<a href=support.php?id=".$userInfo['id']"><i class="glyphicon glyphicon-question-sign"></i> Support</a>';
-									echo '</li>';
-									}*/
-								?>	
-                                <li>
-                                    <?php echo "<a href="."support.php?id=".$userInfo['id']?> "><i class="glyphicon glyphicon-question-sign"></i> Support</a>
+								?>
+								<li>
+                                    <a href="parametres.php?id=<?= $userInfo['id']?> " ><i class="glyphicon glyphicon-wrench"></i> Paramètres</a>
                                 </li>
-								
-								
-                                <li class="divider"></li>
+								<li class="divider"></li>
                                 <li>
-                                    <a href="php/deconnexion.php"><i class="glyphicon glyphicon-off"></i> Déconnexion</a>
-                                </li>
+                                    <li>
+                                        <a href="php/deconnexion.php"><i class="glyphicon glyphicon-off"></i> Déconnexion</a>
+                                    </li>
                             </ul>
                         </li>
                     </ul>
@@ -127,15 +121,22 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                         <!-- Page Heading -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header">
+                                <?php
+									if (isset($_SESSION['inscriptionOk']) AND isset($_SESSION['pseudoCree']) AND $userInfo['id'] == 6)  // test pour voir si un utilisateur a été crée
+									{
+											echo'<div class="alert alert-success" role="alert">L\'utilisateur '.$_SESSION['pseudoCree'].' a bien été crée</div>';
+											unset($_SESSION['inscriptionOk']);  //supprimer le variable de session
+											unset($_SESSION['pseudoCree']);	//supprimer le variable de session
+									}
+								?>
+                                    <h1 class="page-header">
 									Caméra en Direct <small>Visionner le flux des caméras en direct</small>
 								</h1>
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <i class="glyphicon glyphicon-facetime-video"></i>
-                                          Caméra en Direct
-                                    </li>
-                                </ol>
+                                    <ol class="breadcrumb">
+                                        <li>
+                                            <i class="glyphicon glyphicon-facetime-video"></i> Caméra en Direct
+                                        </li>
+                                    </ol>
                             </div>
                         </div>
 
@@ -171,7 +172,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)  // verfier si la variable id existe
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8084" scrolling="no" frameborder="0" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="http://<?=$ip?>:8081" scrolling="no" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>

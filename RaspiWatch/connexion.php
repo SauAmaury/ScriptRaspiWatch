@@ -24,7 +24,7 @@ if (isset($_POST['ok'])){
        }
        else  // si l'utilisateur n'existe pas dans la bd
        {
-           $erreur = "Mauvais mail ou mot de passe !";
+           $erreur = "Mauvais pseudo ou mot de passe !";
        }
    }
    else    // si l'un des champs es vide
