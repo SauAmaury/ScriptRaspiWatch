@@ -75,10 +75,10 @@ sudo mkdir /var/www/RaspiWatch/imgCamera1
 sudo mkdir /var/www/RaspiWatch/imgCamera2
 sudo mkdir /var/www/RaspiWatch/imgCamera3
 sudo mkdir /var/www/RaspiWatch/imgCamera4
-sudo chmod 766 /var/www/RaspiWatch/imgCamera1
-sudo chmod 766 /var/www/RaspiWatch/imgCamera2
-sudo chmod 766 /var/www/RaspiWatch/imgCamera3
-sudo chmod 766 /var/www/RaspiWatch/imgCamera4
+sudo chmod 777 /var/www/RaspiWatch/imgCamera1
+sudo chmod 777 /var/www/RaspiWatch/imgCamera2
+sudo chmod 777 /var/www/RaspiWatch/imgCamera3
+sudo chmod 777 /var/www/RaspiWatch/imgCamera4
 sudo rm /etc/default/motion
 sudo cp motion /etc/default
 
