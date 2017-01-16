@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `membre` (
 --
 
 INSERT INTO `membre` (`id`, `pseudo`, `pass`, `date_inscription`, `admin`) VALUES
-(1, 'root', '39dfa55283318d31afe5a3ff4a0e3253e2045e43', '2016-10-23', 1);
+(6, 'root', '39dfa55283318d31afe5a3ff4a0e3253e2045e43', '2016-10-23', 1);
 
 
 
