@@ -20,3 +20,5 @@ sudo apt-get purge --yes --force-yes phpmyadmin
 sudo apt-get remove --yes --force-yes openssl
 sudo apt-get purge --yes --force-yes openssl
 
+sudo rm -r /var/www/RaspiWatch/
+
