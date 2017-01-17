@@ -11,6 +11,7 @@ CREATE TABLE `security` (
   `event_time_stamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00')
    ENGINE=InnoDB DEFAULT CHARSET=latin1;
    
+  ALTER TABLE `security` ADD `id` INT NOT NULL AUTO_INCREMENT AFTER `event_time_stamp`, ADD PRIMARY KEY (`id`);
 
 
 CREATE TABLE IF NOT EXISTS `membre` (
