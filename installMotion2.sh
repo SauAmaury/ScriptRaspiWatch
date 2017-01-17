@@ -80,11 +80,9 @@ echo "mysql-server-5.5 mysql-server/root_password_again password raspberry" | de
 sudo apt-get -y install mysql-server-5.5
 
 
-echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/app-password-confirm password raspberry' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/admin-pass password raspberry' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/app-pass password raspberry' | debconf-set-selections
-echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
+echo "phpmyadmin phpmyadmin/internal/skip-preseed boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | debconf-set-selections
 sudo apt-get install --yes --force-yes phpmyadmin
 
 
