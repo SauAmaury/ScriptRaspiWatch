@@ -7,7 +7,7 @@ class connexion {
     
     public function __construct() {
 		try{
-			$this->bdd = new PDO('mysql:host=localhost;dbname=motion', 'root','raspberry');      
+			$this->bdd = new PDO('mysql:host=localhost;dbname=mysql', 'root','raspberry');      
 		}
 		catch(Exception $e){
 			die('Erreur : '.$e->getMessage());
