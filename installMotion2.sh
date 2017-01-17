@@ -16,19 +16,11 @@ read -rsp $'Appuyer sur une touche pour continuer\n' -n1 key
 sudo apt-get update --yes --force-yes
 sudo apt-get upgrade --yes --force-yes
 
-# Installation des paquets
+#desinstallation des paquets
 
 sudo apt-get remove --yes --force-yes  mysql-server-5.5
 sudo apt-get remove --yes --force-yes phpmyadmin
 
-echo "mysql-server-5.5 mysql-server/root_password password raspberry" | debconf-set-selections
-echo "mysql-server-5.5 mysql-server/root_password_again password raspberry" | debconf-set-selections
-sudo apt-get -y install mysql-server-5.5
-
-echo "phpmyadmin phpmyadmin/internal/skip-preseed boolean true" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | debconf-set-selections
-sudo apt-get install --yes --force-yes phpmyadmin
 
 sudo apt-get remove --yes --force-yes motion
 sudo apt-get install --yes --force-yes motion
@@ -81,13 +73,24 @@ sudo chmod 777 /var/www/RaspiWatch/imgCamera4
 sudo rm /etc/default/motion
 sudo cp motion /etc/default
 
-
-sudo chmod 711 uninstall.sh
-
-
 # Configuration de la BDD
 
+echo "mysql-server-5.5 mysql-server/root_password password raspberry" | debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again password raspberry" | debconf-set-selections
+sudo apt-get -y install mysql-server-5.5
+
+
+echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/app-password-confirm password raspberry' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/admin-pass password raspberry' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/app-pass password raspberry' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
+sudo apt-get install --yes --force-yes phpmyadmin
+
+
 mysql -uroot -praspberry < Script.sql
+
+sudo chmod 711 uninstall.sh
 
 echo Installation terminée
 echo Redemarrage Iminent
