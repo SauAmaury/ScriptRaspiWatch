@@ -59,7 +59,6 @@ sudo cp -R  RaspiWatch /var/www/
 
 sudo rm /etc/motion/*
 sudo cp motion.conf /etc/motion/
-sudo cp  /etc/motion/
 sudo cp thread1.conf /etc/motion/
 sudo cp thread2.conf /etc/motion/
 sudo cp thread3.conf /etc/motion/
@@ -92,6 +91,6 @@ mysql -uroot -praspberry < Script.sql
 
 echo Installation terminée
 echo Redemarrage Iminent
-read -rsp $'Appuyer sur une touche pour redémarrer\n' -n1 key
+
 
 sudo reboot
